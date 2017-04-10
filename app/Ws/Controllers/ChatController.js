@@ -7,8 +7,12 @@ class ChatController {
     this.request = request
   }
 
+  * joinRoom(room){
+    console.log("boop!")
+  }
+
   * onMessage(message){
-    // const newMessage = yield 
+    // const newMessage = yield
   }
 
 }

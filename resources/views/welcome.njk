@@ -1,10 +1,12 @@
 {% extends 'master' %}
 
 {% block content %}
-  <div class="__banner">
-    <div class="banner__inner">
-      <img src="/assets/logo.svg">
-      <h2>Practical <span>Reliable</span> Productive</h2>
-    </div>
-  </div>
+  <script src="https://unpkg.com/adonis-websocket-client@1.0.2/dist/ws.js"></script>
+  <script type="text/javascript">
+    const io = ws('');
+    const client = io.channel('chat').connect();
+    client.joinRoom('lobby', {}, function(error, joined){
+      console.log('thingy!');
+    })
+  </script>
 {% endblock %}
