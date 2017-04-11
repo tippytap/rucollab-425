@@ -8,11 +8,12 @@ class ChatController {
   }
 
   * joinRoom(room){
-    console.log("boop!")
+    console.log('joined ' + room)
   }
 
   * onMessage(message){
     // const newMessage = yield
+    this.socket.toEveryone().inRoom('lobby').emit('message', message)
   }
 
 }

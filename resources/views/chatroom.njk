@@ -1,0 +1,48 @@
+{% extends 'master' %}
+
+{% block content %}
+
+  <style>
+    #chatarea{
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+      float: left;
+      margin-right: 15px;
+    }
+  </style>
+
+  <header>
+    <h1>{{ user.username }}</h1>
+  </header>
+
+  <section>
+    <div id="chatarea">
+
+    </div>
+    <div>
+      <p>Please chat</p>
+      <textarea id="chatbox"></textarea>
+      <button id="send">Send</button>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/adonis-websocket-client@1.0.2/dist/ws.js"></script>
+  <script type="text/javascript">
+    const chatbox = document.getElementById("chatbox");
+    const send = document.getElementById('send');
+    send.addEventListener('click', function(){
+      let message = chatbox.value;
+      client.emit('message', message);
+    });
+    const io = ws('');
+    const client = io.channel('chat').connect();
+    client.joinRoom('lobby', {}, function(error, joined){
+      console.log('thingy!');
+    })
+    client.on('message', function(room, message){
+      console.log(room + ": " + message);
+    })
+    client.emit('message', 'sups?');
+  </script>
+{% endblock %}

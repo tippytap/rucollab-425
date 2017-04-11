@@ -1,0 +1,24 @@
+{% extends 'master' %}
+
+{% block content %}
+
+{{ form.open({action: 'UserController.login'}) }}
+  {{ csrfField }}
+  <div>
+    {{ form.label('email', 'Email') }}
+    {{ form.text('email') }}
+  </div>
+  <div>
+    {{ form.label('password', 'Password') }}
+    {{ form.password('password') }}
+  </div>
+  <div>
+    {{ form.submit('Log in') }}
+  </div>
+  <div>
+    <a href="/register">Register</a>
+  </div>
+
+{{ form.close() }}
+
+{% endblock %}
