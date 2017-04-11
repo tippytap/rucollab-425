@@ -14,6 +14,7 @@
 
   <header>
     <h1>{{ user.username }}</h1>
+    <input id="user_id" type="hidden" value="{{ user.id }}"/>
   </header>
 
   <section>
@@ -31,18 +32,30 @@
   <script type="text/javascript">
     const chatbox = document.getElementById("chatbox");
     const send = document.getElementById('send');
+    const user_id = document.getElementById('user_id');
+    const chatarea = document.getElementById('chatarea');
+
     send.addEventListener('click', function(){
-      let message = chatbox.value;
+      let message = {
+        user_id: user_id.value,
+        message_string: chatbox.value
+      };
       client.emit('message', message);
     });
+
     const io = ws('');
     const client = io.channel('chat').connect();
-    client.joinRoom('lobby', {}, function(error, joined){
-      console.log('thingy!');
-    })
+
+    client.joinRoom('lobby', {}, function(error, joined){});
+
     client.on('message', function(room, message){
-      console.log(room + ": " + message);
+      let el = document.createElement('p');
+      el.textContent = message.username + ": " + message.message_string;
+      chatarea.append(el);
     })
-    client.emit('message', 'sups?');
+
+    client.on('joined', function(room, user){
+      console.log(room);
+    })
   </script>
 {% endblock %}
