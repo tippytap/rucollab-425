@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="row">
-  <div class="small-10 columns small-centered">
-    <div class="callout">
+  <div class="small-8 columns small-centered">
+    <div class="callout clearfix">
     <p class="text-center">Welcome! Please log in</p>
     {{ form.open({action: 'UserController.login'}) }}
       {{ csrfField }}
@@ -16,9 +16,11 @@
         {{ form.label('password', 'Password') }}
         {{ form.password('password') }}
       </div>
-      <div>
-        {{ form.submit('Log in', 'login', {class: 'button'}) }}
-        <a href="/register">Register</a>
+      <div class="row">
+        <div class="small-12 columns text-right">
+          <a href="/register" class="">Register</a>
+          {{ form.submit('Log in', 'login', {class: 'button small-12 large-4 columns'}) }}
+        </div>
       </div>
     {{ form.close() }}
   </div>

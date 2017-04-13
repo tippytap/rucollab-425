@@ -9,7 +9,7 @@
     "serve": "node server.js",
     "lint": "standard",
     "build-sass": "node-sass --include-path node_modules/foundation-sites/assets resources/scss/main.scss public/style.css",
-    "watch-sass": "nodemon -e resources/scss -x \"npm run build-sass\""
+    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
   },
   "author": "",
   "license": "MIT",
