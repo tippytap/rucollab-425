@@ -8,8 +8,8 @@
     "serve:dev": "nodemon --watch app --watch bootstrap --watch config --watch .env -x node server.js",
     "serve": "node server.js",
     "lint": "standard",
-    "build-sass": "node-sass --include-path scss resources/scss/main.scss public/style.css",
-    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
+    "build-sass": "node-sass --include-path node_modules/foundation-sites/assets resources/scss/main.scss public/style.css",
+    "watch-sass": "nodemon -e resources/scss -x \"npm run build-sass\""
   },
   "author": "",
   "license": "MIT",
