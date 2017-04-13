@@ -2,23 +2,27 @@
 
 {% block content %}
 
-{{ form.open({action: 'UserController.login'}) }}
-  {{ csrfField }}
-  <div>
-    {{ form.label('email', 'Email') }}
-    {{ form.text('email') }}
+<div class="row">
+  <div class="small-10 columns small-centered">
+    <div class="callout">
+    <p class="text-center">Welcome! Please log in</p>
+    {{ form.open({action: 'UserController.login'}) }}
+      {{ csrfField }}
+      <div>
+        {{ form.label('email', 'Email') }}
+        {{ form.text('email') }}
+      </div>
+      <div>
+        {{ form.label('password', 'Password') }}
+        {{ form.password('password') }}
+      </div>
+      <div>
+        {{ form.submit('Log in', 'login', {class: 'button'}) }}
+        <a href="/register">Register</a>
+      </div>
+    {{ form.close() }}
   </div>
-  <div>
-    {{ form.label('password', 'Password') }}
-    {{ form.password('password') }}
   </div>
-  <div>
-    {{ form.submit('Log in') }}
-  </div>
-  <div>
-    <a href="/register">Register</a>
-  </div>
-
-{{ form.close() }}
+</div>
 
 {% endblock %}
