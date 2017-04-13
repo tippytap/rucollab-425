@@ -7,7 +7,9 @@
     "dev": "echo \"\\033[31mWARN: 'dev' will be depreciated soon. Instead use 'npm run serve:dev'\" && npm run serve:dev",
     "serve:dev": "nodemon --watch app --watch bootstrap --watch config --watch .env -x node server.js",
     "serve": "node server.js",
-    "lint": "standard"
+    "lint": "standard",
+    "build-sass": "node-sass --include-path scss resources/scss/main.scss public/style.css",
+    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
   },
   "author": "",
   "license": "MIT",
@@ -23,6 +25,7 @@
     "adonis-middleware": "^1.0.11",
     "adonis-websocket": "^1.0.3",
     "foundation-sites": "^6.3.1",
+    "node-sass": "^4.5.2",
     "pg": "^6.1.5",
     "youch": "^2.0.4"
   },
