@@ -9,8 +9,12 @@
       {{ form.open({action: 'UserController.store'}) }}
         {{ csrfField }}
         <div>
-          {{ form.label('name', 'Name') }}
-          {{ form.text('name') }}
+          {{ form.label('firstname', 'First Name') }}
+          {{ form.text('firstname') }}
+        </div>
+        <div>
+          {{ form.label('lastname', 'Last Name') }}
+          {{ form.text('lastname') }}
         </div>
         <div>
           {{ form.label('email', 'Email') }}

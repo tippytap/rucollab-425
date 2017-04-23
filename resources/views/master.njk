@@ -18,6 +18,9 @@
       <nav class="small-3 large-3 columns">
         <a href="/">Home</a>
         <a href="#">About</a>
+        {% if currentUser %}
+        <a href="/logout">Log out</a>
+        {% endif %}
       </nav>
       <div class="small-3 columns"></div>
     </div>

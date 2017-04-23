@@ -38,3 +38,4 @@ Route.resource('users', 'UserController').except('store', 'login').middleware('a
 Route.get('/home', 'UserController.home').as('home').middleware('auth')
 Route.post('/store', 'UserController.store')
 Route.post('/login', 'UserController.login')
+Route.get('/logout', 'UserController.logout')

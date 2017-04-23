@@ -31,7 +31,8 @@ class UserController {
     const user = new User()
 
     // set the user properties
-    user.username = userInputs.name
+    user.firstname = userInputs.firstname
+    user.lastname = userInputs.lastname
     user.password = userInputs.password
     user.email = userInputs.email
     user.phone = userInputs.phone
@@ -80,6 +81,12 @@ class UserController {
       response.redirect('back')
       return
     }
+    response.redirect('/')
+
+  }
+
+  * logout(request, response) {
+    yield request.auth.logout()
     response.redirect('/')
 
   }
