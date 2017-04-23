@@ -9,7 +9,9 @@
     "serve": "node server.js",
     "lint": "standard",
     "build-sass": "node-sass --include-path node_modules/foundation-sites/assets resources/scss/main.scss public/style.css",
-    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
+    "watch-sass": "nodemon -e scss -x \"npm run build-sass\"",
+    "build-vue": "browserify -t vueify -e resources/js/main.js -o public/scripts/build.js",
+    "watch-vue": "nodemon -e js -x \"npm run build-vue\""
   },
   "author": "",
   "license": "MIT",
@@ -40,6 +42,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
-    "standard": "^10.0.1"
+    "standard": "^10.0.1",
+    "vue": "^2.2.6",
+    "vue-router": "^2.4.0",
+    "vueify": "^9.4.1"
   }
 }

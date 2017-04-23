@@ -1,16 +1,29 @@
 window.dashboard = window.dashboard || {};
 (function(ns){
 /////////////////////////////////////////////////// COMPONENTS //
+ns.dashboardTemp = document.getElementById('dashboard')
+
 const Dashboard = {
-  template: "<h2>{{ message }}</h2>",
+  template: "#dashboard",
   data: function(){
     return {
       message: "Hello world"
     }
   }
 }
-/////////////////////////////////////////////////// COMPONENTS //
+ns.Dashboard = Dashboard
 
+const Group = {
+
+}
+ns.Group = Group
+
+const Chat = {}
+ns.Chat = Chat
+
+const Todo = {}
+ns.Todo = Todo
+/////////////////////////////////////////////////// COMPONENTS //
 
 /////////////////////////////////////////////////// ROUTES //
 const routes = [

@@ -2,13 +2,12 @@
 
 {% block content %}
 
+<input type="hidden" value="{{ user.id }}"/>
+
 <section id="app">
   <router-view></router-view>
 </section>
 
-<script type="text/javascript" src="/scripts/vue.js"></script>
-<script type="text/javascript" src="/scripts/vue-router.js"></script>
-<script type="text/javascript" src="/scripts/ws.js"></script>
-<script type="text/javascript" src="/scripts/app.js"></script>
+<script type="text/javascript" src="/scripts/build.js"></script>
 
 {% endblock %}
