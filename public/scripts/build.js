@@ -2552,7 +2552,7 @@ if (inBrowser && window.Vue) {
 module.exports = VueRouter;
 
 }).call(this,require('_process'))
-},{"_process":8}],3:[function(require,module,exports){
+},{"_process":7}],3:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v2.2.6
@@ -9387,7 +9387,7 @@ setTimeout(function () {
 module.exports = Vue$2;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":8}],4:[function(require,module,exports){
+},{"_process":7}],4:[function(require,module,exports){
 ;(function(){
 //
 //
@@ -9415,9 +9415,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-472c44b8", __vue__options__)
+    hotAPI.createRecord("data-v-13155816", __vue__options__)
   } else {
-    hotAPI.reload("data-v-472c44b8", __vue__options__)
+    hotAPI.reload("data-v-13155816", __vue__options__)
   }
 })()}
 },{"vue":3,"vue-hot-reload-api":1}],5:[function(require,module,exports){
@@ -9428,16 +9428,13 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 //
 //
 //
-//
 
-const test = require('./test.vue')
 module.exports = {
   components: {
-    'test': test
   },
   data: function(){
     return {
-      msg: 'Hello world!'
+      msg: 'Oh hey!'
     }
   }
 }
@@ -9446,25 +9443,25 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"red"},[_vm._v(_vm._s(_vm.msg))]),_vm._v(" "),_c('test')],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"red"},[_vm._v(_vm._s(_vm.msg))])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2da7e057", __vue__options__)
+    hotAPI.createRecord("data-v-2f9b95e8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2da7e057", __vue__options__)
+    hotAPI.reload("data-v-2f9b95e8", __vue__options__)
   }
 })()}
-},{"./test.vue":7,"vue":3,"vue-hot-reload-api":1}],6:[function(require,module,exports){
+},{"vue":3,"vue-hot-reload-api":1}],6:[function(require,module,exports){
 const Vue = require('vue')
-const App = require('./app.vue')
+const App = require('./components/app.vue')
 const VueRouter = require('vue-router')
 
 ///////////////////////////////////////////////////// COMPONENTS //
-const Dashboard = require('./dashboard.vue')
+const Dashboard = require('./components/dashboard.vue')
 ///////////////////////////////////////////////////// COMPONENTS //
 
 Vue.use(VueRouter)
@@ -9485,38 +9482,7 @@ new Vue({
   }
 })
 
-},{"./app.vue":4,"./dashboard.vue":5,"vue":3,"vue-router":2}],7:[function(require,module,exports){
-;(function(){
-//
-//
-//
-//
-
-module.exports = {
-  data(){
-    return {
-      message: "boop"
-    }
-  }
-}
-
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('h4',[_vm._v(_vm._s(_vm.message))])}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-297be21f", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-297be21f", __vue__options__)
-  }
-})()}
-},{"vue":3,"vue-hot-reload-api":1}],8:[function(require,module,exports){
+},{"./components/app.vue":4,"./components/dashboard.vue":5,"vue":3,"vue-router":2}],7:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 

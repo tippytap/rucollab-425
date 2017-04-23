@@ -11,7 +11,7 @@
     "build-sass": "node-sass --include-path node_modules/foundation-sites/assets resources/scss/main.scss public/style.css",
     "watch-sass": "nodemon -e scss -x \"npm run build-sass\"",
     "build-vue": "browserify -t vueify -e resources/js/main.js -o public/scripts/build.js",
-    "watch-vue": "nodemon -e js -x \"npm run build-vue\""
+    "watch-vue": "nodemon -e vue -x \"npm run build-vue\""
   },
   "author": "",
   "license": "MIT",

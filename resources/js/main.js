@@ -1,9 +1,9 @@
 const Vue = require('vue')
-const App = require('./app.vue')
+const App = require('./components/app.vue')
 const VueRouter = require('vue-router')
 
 ///////////////////////////////////////////////////// COMPONENTS //
-const Dashboard = require('./dashboard.vue')
+const Dashboard = require('./components/dashboard.vue')
 ///////////////////////////////////////////////////// COMPONENTS //
 
 Vue.use(VueRouter)
