@@ -3813,21 +3813,20 @@ a.thumbnail {
 .clearfix::after {
   clear: both; }
 
-.inline-vertical-center {
-  height: 100px;
-  line-height: 100px;
-  white-space: nowrap; }
-
 header {
+  height: 75px;
   background-color: #c3011c;
   color: white;
   width: 100%;
-  height: auto;
   margin-bottom: 20px;
   padding: 0.5em; }
-  header a {
-    text-decoration: none;
-    color: white; }
-    header a:hover {
-      text-decoration: underline;
-      color: white; }
+  header nav {
+    height: inherit; }
+    header nav a {
+      height: inherit;
+      text-decoration: none;
+      color: white;
+      display: block; }
+      header nav a:hover {
+        text-decoration: underline;
+        color: white; }

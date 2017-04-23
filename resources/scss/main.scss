@@ -1,24 +1,24 @@
 @import "foundation";
 
-.inline-vertical-center{
-  height: 100px;
-  line-height: 100px;
-  white-space: nowrap;
-}
 
 header{
+  height: 75px;
   background-color: map-get($foundation-palette, primary);
   color: white;
   width: 100%;
-  height: auto;
   margin-bottom: 20px;
   padding: 0.5em;
-  a{
-    text-decoration: none;
-    color: white;
-    &:hover{
-      text-decoration: underline;
+  nav{
+    height: inherit;
+    a{
+      height: inherit;
+      text-decoration: none;
       color: white;
+      display: block;
+      &:hover{
+        text-decoration: underline;
+        color: white;
+      }
     }
   }
 }

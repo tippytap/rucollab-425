@@ -11,6 +11,9 @@ class UsersTableSchema extends Schema {
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
       table.string('phone', 60).nullable()
+      table.string('provile_img_path').nullable()
+      table.boolean('is_active').notNullable()
+      table.string('description', 254).nullable()
       table.timestamps()
     })
   }
