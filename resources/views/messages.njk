@@ -1,0 +1,9 @@
+{% if old('messages') %}
+<section class="callout success small">
+  <ul>
+  {% for message in old('messages') %}
+    <li>{{ message }}</li>
+  {% endfor %}
+  </ul>
+</section>
+{% endif %}

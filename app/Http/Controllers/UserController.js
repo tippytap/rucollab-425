@@ -35,13 +35,15 @@ class UserController {
     user.password = userInputs.password
     user.email = userInputs.email
     user.phone = userInputs.phone
+    user.is_active = true
+    user.profile_img_path = "/assets/default.png"
 
     // save the new user to the database, but we have to make sure to yield it
     // because this is a generator function and it won't do anything otherwise
     yield user.save()
 
     // yield the request, including a success message to be flashed to the user
-    // yield request.withAll().andWith({messages: ["User created successfully"]}).flash()
+    yield request.withAll().andWith({messages: ["User created successfully"]}).flash()
 
     // redirect the user back to the login page so that they can login to the system
     response.redirect("/login")
@@ -71,10 +73,10 @@ class UserController {
 
     try{
       yield request.auth.attempt(email, password)
-      // yield request.withAll().andWith({messages: ['Logged in!']}).flash()
+      yield request.withAll().andWith({messages: ['Logged in!']}).flash()
     }
     catch(e){
-      // yield request.withAll().andWith({errors: [{message: 'Incorrect email and/or password.'}]}).flash()
+      yield request.withAll().andWith({errors: [{message: 'Incorrect email and/or password.'}]}).flash()
       response.redirect('back')
       return
     }

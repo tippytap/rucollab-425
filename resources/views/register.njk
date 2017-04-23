@@ -2,29 +2,36 @@
 
 {% block content %}
 
-{{ form.open({action: 'UserController.store'}) }}
-  {{ csrfField }}
-  <div>
-    {{ form.label('name', 'Name') }}
-    {{ form.text('name') }}
-  </div>
-  <div>
-    {{ form.label('email', 'Email') }}
-    {{ form.text('email') }}
-  </div>
-  <div>
-    {{ form.label('password', 'Password') }}
-    {{ form.password('password') }}
-  </div>
-  <div>
-    {{ form.label('phone', 'Phone number (555) 555-5555') }}
-    {{ form.text('phone') }}
-  </div>
+<section class="row">
+  <div class="small-12 large-6 large-centered small-centered">
+    <div class="callout clearfix">
+      <h3>Please Register</h3>
+      {{ form.open({action: 'UserController.store'}) }}
+        {{ csrfField }}
+        <div>
+          {{ form.label('name', 'Name') }}
+          {{ form.text('name') }}
+        </div>
+        <div>
+          {{ form.label('email', 'Email') }}
+          {{ form.text('email') }}
+        </div>
+        <div>
+          {{ form.label('password', 'Password') }}
+          {{ form.password('password') }}
+        </div>
+        <div>
+          {{ form.label('phone', 'Phone number (555) 555-5555') }}
+          {{ form.text('phone') }}
+        </div>
 
-  <div>
-    {{ form.submit('Register') }}
-  </div>
+        <div>
+          {{ form.submit('Register', '', {class: 'button'}) }}
+        </div>
+      {{ form.close() }}
 
-{{ form.close() }}
+    </div>
+  </div>
+</section>
 
 {% endblock %}

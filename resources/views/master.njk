@@ -13,11 +13,17 @@
 </head>
 <body>
   <header class="clearfix">
-    <h1 class="">RUCollab</h1>
-    {# <nav class="float-left">
-      <a href="#">About</a>
-    </nav> #}
+    <div class="row">
+      <h1 class="small-3 large-3 columns">RUCollab</h1>
+      <nav class="small-3 large-3 columns">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="small-3 columns"></div>
+    </div>
   </header>
+
+  {% include 'messages' %}
 
   <section>
     <div class="__wrapper">
