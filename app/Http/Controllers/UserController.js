@@ -68,7 +68,6 @@ class UserController {
   }
 
   * login(request, response){
-    console.log("login")
     const email = request.input('email')
     const password = request.input('password')
 
@@ -92,11 +91,8 @@ class UserController {
   }
 
   * home(request, response){
-    console.log("boop")
     let user = yield request.auth.getUser()
-    console.log(user)
-    yield response.sendView('chatroom', { 'user': user.toJSON() })
-
+    yield response.sendView('dashboard', { 'user': user.toJSON() })
   }
 
 }
