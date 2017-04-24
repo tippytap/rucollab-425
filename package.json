@@ -29,6 +29,7 @@
     "foundation-sites": "^6.3.1",
     "node-sass": "^4.5.2",
     "pg": "^6.1.5",
+    "whatwg-fetch": "^2.0.3",
     "youch": "^2.0.4"
   },
   "standard": {
@@ -45,6 +46,7 @@
     "standard": "^10.0.1",
     "vue": "^2.2.6",
     "vue-router": "^2.4.0",
-    "vueify": "^9.4.1"
+    "vueify": "^9.4.1",
+    "whatwg-fetch": "^2.0.3"
   }
 }
