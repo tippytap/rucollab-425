@@ -36,6 +36,8 @@ header{
   float: left;
   &.full{
     width: 100%;
+    margin: 0 auto;
+    float: none;
   }
   .lead{
     border-bottom: 1px solid gray;

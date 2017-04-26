@@ -2,20 +2,18 @@
 
 {% block content %}
 
-{# {{ form.open({ action: 'GroupController.test', name: 'formy', id: 'formy'}) }}
-  {{ csrfField }}
-  <div>
+<div class="row">
+  <div class="group full">
+    <p class="lead">{{ group.group_name }}</p>
   </div>
-{{ form.close() }} #}
+</div>
 
-
-{# <input type="hidden" id="userId" value="{{ user.id }}"/>
-
+{#
 <section id="app">
   <router-view></router-view>
-</section>
+</section> #}
 
 
-<script type="text/javascript" src="/scripts/build.js"></script> #}
+{# <script type="text/javascript" src="/scripts/build.js"></script> #}
 
 {% endblock %}

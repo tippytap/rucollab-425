@@ -3840,7 +3840,9 @@ header {
   margin: 0 2%;
   float: left; }
   .group.full {
-    width: 100%; }
+    width: 100%;
+    margin: 0 auto;
+    float: none; }
   .group .lead {
     border-bottom: 1px solid gray;
     padding: 5px 0 5px 10px; }
