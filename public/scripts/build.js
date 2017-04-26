@@ -9427,16 +9427,32 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 //
 //
 //
+//
+//
+//
+//
 
 let userId = document.getElementById("userId").value
 let groups = []
+let csrf = document.getElementsByName('_csrf')[0].value
 module.exports = {
   components: {
   },
+  computed: {
+    getPath(){
+      return "/groups/test"
+    },
+  },
   data: function(){
     return {
-      userId: userId
+      userId: userId,
+      csrf: csrf
     }
+  },
+  methods: {
+    testy: function(){
+      document.getElementById('formy').submit()
+    },
   },
   beforeRouteEnter(to, from, next){
     let route = "/groups/allGroups/" + userId
@@ -9454,7 +9470,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('form',{attrs:{"id":"formy","name":"formy","action":_vm.getPath}},[_c('input',{attrs:{"type":"hidden","name":"_csrf"},domProps:{"value":_vm.csrf}})]),_vm._v(" "),_c('button',{on:{"click":_vm.testy}},[_vm._v("cliky me!!")])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

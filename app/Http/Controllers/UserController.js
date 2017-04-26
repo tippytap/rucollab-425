@@ -1,6 +1,8 @@
 'use strict'
 
 const User = use('App/Model/User')
+const Group = use('App/Model/Group')
+const Membership = use('App/Model/Membership')
 
 class UserController {
 
@@ -92,7 +94,16 @@ class UserController {
 
   * home(request, response){
     let user = yield request.auth.getUser()
-    yield response.sendView('dashboard', { 'user': user.toJSON() })
+    let membership = yield Membership.query().where('user_id', user.id).fetch()
+    let groups = []
+    for(let i in membership.value()){
+      let group = yield Group.find(membership.value()[i].id)
+      groups.push(group)
+    }
+    yield response.sendView('dashboard', {
+      'user': user.toJSON(),
+      'groups': groups
+    })
   }
 
 }

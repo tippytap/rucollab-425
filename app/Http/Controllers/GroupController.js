@@ -22,7 +22,13 @@ class GroupController {
       let group = yield Group.find(membership.value()[0].id)
       groups.push(group)
     }
+    yield request.session.put('groups', groups)
     response.json(groups)
+  }
+
+  * test(request, response){
+    yield response.send('hey')
+    response.redirect('/home')
   }
 
   * store(request, response) {
@@ -30,7 +36,10 @@ class GroupController {
   }
 
   * show(request, response) {
-    //
+    const group = yield Group.find(request.param('id'))
+    yield response.sendView('group', {
+      group: group.toJSON()
+    })
   }
 
   * edit(request, response) {

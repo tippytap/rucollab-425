@@ -3,6 +3,7 @@
 const Env = use('Env')
 const Youch = use('youch')
 const Http = exports = module.exports = {}
+const Helpers = use('Helpers')
 
 /**
  * handle errors occured during a Http request.
@@ -38,4 +39,7 @@ Http.handleError = function * (error, request, response) {
  * starting http server.
  */
 Http.onStart = function () {
+  const publicPath = Helpers.basePath()
+  const View = use('View')
+  View.global('publicPath', publicPath)
 }

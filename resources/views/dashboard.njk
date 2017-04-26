@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<input type="hidden" id="userId" value="{{ user.id }}"/>
-
-<section id="app">
-  <router-view></router-view>
+<section>
+{% for group in groups %}
+  <div class="group">
+    <p class="lead"><a href="/group/{{group.id}}">{{group.group_name}}</a></p>
+  </div>
+{% endfor %}
 </section>
 
-<script type="text/javascript" src="/scripts/build.js"></script>
+
+{# <script type="text/javascript" src="/scripts/build.js"></script> #}
 
 {% endblock %}
