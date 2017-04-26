@@ -3,6 +3,7 @@
 const User = use('App/Model/User')
 const Group = use('App/Model/Group')
 const Membership = use('App/Model/Membership')
+const Task = use('App/Model/Task')
 
 class UserController {
 
@@ -96,13 +97,21 @@ class UserController {
     let user = yield request.auth.getUser()
     let membership = yield Membership.query().where('user_id', user.id).fetch()
     let groups = []
+    let tasks = []
     for(let i in membership.value()){
-      let group = yield Group.find(membership.value()[i].id)
+      let group = {}
+      let groupData = yield Group.find(membership.value()[i].id)
+      group.groupData = groupData
+      let tasks = yield Task.query().where('group', groupData.id).fetch()
+      group.tasks = tasks.value().filter(function(obj, i){
+        return i < 5
+      })
+      console.log(group.tasks)
       groups.push(group)
     }
     yield response.sendView('dashboard', {
       'user': user.toJSON(),
-      'groups': groups
+      'groups': groups,
     })
   }
 

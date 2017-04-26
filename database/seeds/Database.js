@@ -21,7 +21,6 @@ class DatabaseSeeder {
     const User = use('App/Model/User')
     const userOne = yield User.find(1)
     const groupOne = Factory.model('App/Model/Group').make()
-    groupOne.user_id = userOne.id
     yield groupOne.save()
     let _membership = Factory.model('App/Model/Membership').make()
     _membership.user_id = userOne.id;
@@ -32,7 +31,6 @@ class DatabaseSeeder {
     const users = yield Factory.model('App/Model/User').create(5)
     users.each(function * (user){
       const group = Factory.model('App/Model/Group').make()
-      group.user_id = user.id
       yield group.save()
     })
     users.each(function * (user){

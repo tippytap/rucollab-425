@@ -3,6 +3,8 @@
 const User = use('App/Model/User')
 const Group = use('App/Model/Group')
 const Membership = use('App/Model/Membership')
+const Task = use('App/Model/Task')
+const Assignment = use('App/Model/Assignment')
 
 class GroupController {
 
@@ -37,8 +39,10 @@ class GroupController {
 
   * show(request, response) {
     const group = yield Group.find(request.param('id'))
+    const tasks = yield Task.query().where('group', group.id).fetch()
     yield response.sendView('group', {
-      group: group.toJSON()
+      group: group.toJSON(),
+      tasks: tasks.value()
     })
   }
 

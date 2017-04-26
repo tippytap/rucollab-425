@@ -5,7 +5,12 @@
 <section>
 {% for group in groups %}
   <div class="group">
-    <p class="lead"><a href="/group/{{group.id}}">{{group.group_name}}</a></p>
+    <p class="lead"><a href="/group/{{group.groupData.id}}">{{group.groupData.group_name}}</a></p>
+    <div class="small-6 columns">
+      {% for task in group.tasks %}
+        <p>{{ task.task_string }}</p>
+      {% endfor %}
+    </div>
   </div>
 {% endfor %}
 </section>

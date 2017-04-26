@@ -3,8 +3,27 @@
 {% block content %}
 
 <div class="row">
-  <div class="group full">
+  <div class="group full clearfix">
     <p class="lead">{{ group.group_name }}</p>
+    {# <div class="small-4 columns">Today's Date</div> #}
+    <div class="small-4 columns">
+      <div>
+      {{ form.open({ action: "TaskController.store"}) }}
+        {{ csrfField }}
+        {{ form.hidden('group', group.id) }}
+        <div>
+          {{ form.text('newTask') }}
+          {{ form.submit('Add Task') }}
+        </div>
+      {{ form.close() }}
+      </div>
+      <div>
+        {% for task in tasks %}
+          {{ task.task_string }}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="small-4 columns">Messages</div>
   </div>
 </div>
 

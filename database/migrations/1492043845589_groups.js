@@ -9,7 +9,6 @@ class GroupsTableSchema extends Schema {
       table.increments()
       table.string('group_name').notNullable()
       table.string('group_description').notNullable()
-      table.integer('group_leader')
       table.timestamps()
     })
   }
