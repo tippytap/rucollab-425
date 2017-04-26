@@ -5,6 +5,7 @@ const Group = use('App/Model/Group')
 const Membership = use('App/Model/Membership')
 const Task = use('App/Model/Task')
 const Assignment = use('App/Model/Assignment')
+const Message = use('App/Model/Message')
 
 class GroupController {
 
@@ -37,12 +38,33 @@ class GroupController {
     //
   }
 
+  * addMember(request, response){
+    const inputs = yield request.all()
+    let membership = new Membership()
+    let user = yield User.query().where('email', inputs.email).fetch()
+    user = user.value()[0]
+    membership.user_id = user.id
+    membership.group_id = inputs.group_id
+    yield membership.save()
+    response.redirect('back')
+  }
+
   * show(request, response) {
     const group = yield Group.find(request.param('id'))
+    const user = yield request.auth.getUser()
     const tasks = yield Task.query().where('group', group.id).fetch()
+    const messages = yield Message.query().where('group', group.id).fetch()
+    for(let i in messages.value()){
+      let message = messages.value()[i];
+      let member = yield Membership.find(message.member)
+      let u = yield User.find(member.user_id)
+      message.username = u.firstname + " " + u.lastname
+    }
     yield response.sendView('group', {
       group: group.toJSON(),
-      tasks: tasks.value()
+      tasks: tasks.value(),
+      user: user.toJSON(),
+      messages: messages.value()
     })
   }
 

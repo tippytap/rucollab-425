@@ -8,7 +8,8 @@ class MessagesTableSchema extends Schema {
     this.create('messages', (table) => {
       table.increments()
       table.integer('member').references('memberships.id')
-      table.string('message_string')
+      table.string('message_string').notNullable()
+      table.integer('group').references('groups.id').notNullable()
       table.timestamps()
     })
   }

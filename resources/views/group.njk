@@ -4,26 +4,84 @@
 
 <div class="row">
   <div class="group full clearfix">
-    <p class="lead">{{ group.group_name }}</p>
-    {# <div class="small-4 columns">Today's Date</div> #}
-    <div class="small-4 columns">
+    <div class="lead clearfix">
+      <p class="small-6 columns">{{ group.group_name }}</p>
+      <div class="small-3 columns ">
+      {{ form.open({ action: 'GroupController.addMember'}) }}
+        {{ csrfField }}
+        {{ form.hidden('group_id', group.id)}}
+        {{ form.label('email', "Add a member") }}
+        {{ form.text('email', "", {placeholder: "Email address"}) }}
+      </div>
+      <div class="small-3 columns">
+        {{ form.submit('Add', "", { class: "button"}) }}
+      {{ form.close() }}
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div>
+        {% for task in tasks %}
+          <div class="task">{{ task.task_string }}</div>
+        {% endfor %}
+      </div>
       <div>
       {{ form.open({ action: "TaskController.store"}) }}
         {{ csrfField }}
         {{ form.hidden('group', group.id) }}
         <div>
           {{ form.text('newTask') }}
-          {{ form.submit('Add Task') }}
+          {{ form.submit('Add Task', "", {class: "button expanded"}) }}
         </div>
       {{ form.close() }}
       </div>
-      <div>
-        {% for task in tasks %}
-          {{ task.task_string }}
+    </div>
+    <div class="small-6 columns">
+      Messages
+      {{ form.hidden('channel', group.group_name)}}
+      {{ form.hidden('group_id', group.id)}}
+      {{ form.hidden('user_id', user.id)}}
+      <div id="chatarea">
+        {% for message in messages %}
+          <p class="message"><span class="username">{{ message.username}}: </span>{{ message.message_string }}</p>
         {% endfor %}
       </div>
+      <textarea id="chatbox"></textarea>
+      <button id="send" class="button expanded">Send</button>
+      <script src="https://unpkg.com/adonis-websocket-client@1.0.2/dist/ws.js"></script>
+      <script type="text/javascript">
+        const chatbox = document.getElementById("chatbox");
+        const send = document.getElementById('send');
+        const user_id = parseInt(document.getElementsByName('user_id')[0].value, 10);
+        const chatarea = document.getElementById('chatarea');
+        const channel = document.getElementsByName('channel')[0].value
+        const group_id = document.getElementsByName('group_id')[0].value
+
+        send.addEventListener('click', function(){
+          let message = {
+            user_id: user_id,
+            message_string: chatbox.value,
+            channel: channel,
+            group_id: group_id
+          };
+          client.emit('message', message);
+        });
+
+        const io = ws('');
+        const client = io.channel('chat').connect();
+
+        client.joinRoom(channel, {}, function(error, joined){});
+
+        client.on('message', function(room, message){
+          let el = document.createElement('p');
+          el.textContent = message.username + ": " + message.message_string;
+          chatarea.append(el);
+        })
+
+        client.on('joined', function(room, user){
+          console.log(room);
+        })
+      </script>
     </div>
-    <div class="small-4 columns">Messages</div>
   </div>
 </div>
 

@@ -100,13 +100,13 @@ class UserController {
     let tasks = []
     for(let i in membership.value()){
       let group = {}
-      let groupData = yield Group.find(membership.value()[i].id)
+      let groupData = yield Group.find(membership.value()[i].group_id)
+      console.log(groupData)
       group.groupData = groupData
       let tasks = yield Task.query().where('group', groupData.id).fetch()
       group.tasks = tasks.value().filter(function(obj, i){
         return i < 5
       })
-      console.log(group.tasks)
       groups.push(group)
     }
     yield response.sendView('dashboard', {

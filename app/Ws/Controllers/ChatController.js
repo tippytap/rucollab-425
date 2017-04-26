@@ -2,6 +2,7 @@
 
 const Message = use('App/Model/Message')
 const User = use('App/Model/User')
+const Membership = use('App/Model/Membership')
 
 class ChatController {
 
@@ -18,13 +19,15 @@ class ChatController {
   * onMessage(msg){
     let message = new Message()
     let user = yield User.find(msg.user_id)
+    let membership = yield Membership.query().where('user_id', msg.user_id).fetch()
 
-    message.user_id = msg.user_id
+    message.member = membership.value()[0].id
     message.message_string = msg.message_string
+    message.group = msg.group_id
     yield message.save()
-    message.username = user.username
+    message.username = user.firstname + " " + user.lastname
 
-    this.socket.toEveryone().inRoom('lobby').emit('message', message.toJSON())
+    this.socket.toEveryone().inRoom(msg.channel).emit('message', message.toJSON())
   }
 
 }
