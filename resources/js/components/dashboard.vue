@@ -1,17 +1,28 @@
 <template>
   <div>
-    <h1 class="red">{{msg}}</h1>
   </div>
 </template>
 
 <script>
+let userId = document.getElementById("userId").value
+let groups = []
 module.exports = {
   components: {
   },
   data: function(){
     return {
-      msg: 'Oh hey!'
+      userId: userId
     }
+  },
+  beforeRouteEnter(to, from, next){
+    let route = "/groups/allGroups/" + userId
+    fetch(route).then(function(resp){
+      return resp.text()
+    }).then(function(data){
+      console.log(data)
+      groups = data
+      next()
+    })
   }
 }
 </script>

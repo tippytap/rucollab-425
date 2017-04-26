@@ -9427,15 +9427,26 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 //
 //
 //
-//
 
+let userId = document.getElementById("userId").value
+let groups = []
 module.exports = {
   components: {
   },
   data: function(){
     return {
-      msg: 'Oh hey!'
+      userId: userId
     }
+  },
+  beforeRouteEnter(to, from, next){
+    let route = "/groups/allGroups/" + userId
+    fetch(route).then(function(resp){
+      return resp.text()
+    }).then(function(data){
+      console.log(data)
+      groups = data
+      next()
+    })
   }
 }
 
@@ -9443,7 +9454,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"red"},[_vm._v(_vm._s(_vm.msg))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div')}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

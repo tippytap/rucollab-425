@@ -3813,6 +3813,9 @@ a.thumbnail {
 .clearfix::after {
   clear: both; }
 
+.hidden {
+  display: none; }
+
 header {
   height: 75px;
   background-color: #c3011c;
@@ -3830,3 +3833,14 @@ header {
       header nav a:hover {
         text-decoration: underline;
         color: white; }
+
+.group {
+  border: 1px solid gray;
+  width: 45%;
+  margin: 0 2%;
+  float: left; }
+  .group.full {
+    width: 100%; }
+  .group .lead {
+    border-bottom: 1px solid gray;
+    padding: 5px 0 5px 10px; }

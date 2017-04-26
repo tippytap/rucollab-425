@@ -39,9 +39,5 @@ Route.get('/home', 'UserController.home').as('home').middleware('auth')
 Route.post('/store', 'UserController.store')
 Route.post('/login', 'UserController.login')
 Route.get('/logout', 'UserController.logout')
-Route.get('/test', function(request, response){
-  response.send({
-    thing: "hi",
-    anotherThing: "there"
-  })
-})
+Route.resource('groups', 'GroupController').middleware('auth')
+Route.get('/groups/allGroups/:userId', 'GroupController.allGroups')

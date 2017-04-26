@@ -1,5 +1,11 @@
 @import "foundation";
 
+.hidden{
+  display: none;
+}
+
+
+
 
 header{
   height: 75px;
@@ -20,5 +26,19 @@ header{
         color: white;
       }
     }
+  }
+}
+
+.group{
+  border: 1px solid gray;
+  width: 45%;
+  margin: 0 2%;
+  float: left;
+  &.full{
+    width: 100%;
+  }
+  .lead{
+    border-bottom: 1px solid gray;
+    padding: 5px 0 5px 10px;
   }
 }
